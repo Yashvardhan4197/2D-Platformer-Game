@@ -1,11 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
-using UnityEditor;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -37,13 +29,11 @@ public class PlayerController : MonoBehaviour
         float Horizontal=Input.GetAxisRaw("Horizontal");
         float Vertical=Input.GetAxisRaw("Vertical");
         float jumping=Input.GetAxisRaw("Jump");
-
-        //Set Ground
-        checkGround=Physics2D.OverlapCircle(ground.position,radius,isground);
         //Call Animations
-        Player_Anim(Horizontal,Vertical,jumping);
+        Player_Anim(Horizontal,Vertical);
         //Transform
-        Player_Transform(Horizontal,Vertical,jumping);
+        Player_Transform(Horizontal,Vertical);
+        Player_Jump(Vertical,jumping);
         //Crouch while pressing ctrl
         bool crouch=Input.GetKey(KeyCode.LeftControl);
         Player_Crouch(crouch);
@@ -55,45 +45,48 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Player_Transform(float Horizontal, float Vertical,float jumping)
+    private void Player_Transform(float Horizontal, float Vertical)
     {
         //Player Movement-
         Vector3 position=transform.position;
         position.x=position.x+Horizontal*Speed*Time.deltaTime;
-        transform.position=position;
-        //Jump
-         if((Vertical>0||jumping>0)&&checkGround==true){
-            rb2d.AddForce(new Vector2(0,jump),ForceMode2D.Force);
-         }
-        
+        transform.position=position;   
     }
 
-    private void Player_Anim(float Horizontal,float Vertical,float jumping)
+    private void Player_Anim(float Horizontal,float Vertical)
     {
         animator.SetFloat("Speed",Mathf.Abs(Horizontal));
         Vector3 scale=transform.localScale;
-        if(Horizontal<0)
-        {
-            if(scale.x>0)
-            {
-            scale.x=-1f*scale.x;
-            }
-        }
-        else if(Horizontal>0)
+        if(Horizontal>0)
         {
             scale.x=Mathf.Abs(scale.x);
         }
+        else if(Horizontal<0)
+        {
+            if(scale.x>0)
+            {
+                scale.x*=(-1);
+            }
+        }
         transform.localScale=scale;
+    }
 
 
-//Jump-Animation
-       if((Vertical>0||jumping>0) && checkGround==true){
+    void Player_Jump(float Vertical,float jumping)
+    {
+        checkGround=Physics2D.OverlapCircle(ground.position,radius,isground);
+        if((Vertical>0||jumping>0) && checkGround==true){
         animator.SetBool("Jump",true);
        }
        else if(Vertical<=0){
         animator.SetBool("Jump",false);
-        checkGround=false;
        }
+       //Jump
+        if((Vertical>0||jumping>0)&&(checkGround==true))
+        {
+        rb2d.AddForce(new Vector2(0,jump),ForceMode2D.Impulse);
+        }
+
     }
     void Player_Crouch(bool crouch)
     {
