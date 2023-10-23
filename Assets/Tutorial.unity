@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfceef11ee57cf4fa828820c543fc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 396074904}
 --- !u!1 &432801652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfceef11ee57cf4fa828820c543fc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1289755566}
 --- !u!61 &1289755565
 BoxCollider2D:
   m_ObjectHideFlags: 0
