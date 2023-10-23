@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,8 +10,7 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D boxCollider;
     public int jump;
     private Rigidbody2D rb2d;
-
-//Checks if ground is there or not
+    //Checks if ground is there or not
     private bool checkGround;
     //Sets radius for the layermask
     public float radius;
@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public Transform ground;
     //Defines what is ground
     public LayerMask isground;
+
+    //Score Controller
+    public ScoreController scoreController;
 
     void Start()
     {
@@ -37,7 +40,6 @@ public class PlayerController : MonoBehaviour
         //Crouch while pressing ctrl
         bool crouch=Input.GetKey(KeyCode.LeftControl);
         Player_Crouch(crouch);
-
 
 
 
@@ -101,5 +103,11 @@ public class PlayerController : MonoBehaviour
             boxCollider.offset=new Vector2(0.012f,1.03f);
         }
     }
-   
+
+    public void pickup()
+    {
+         //scoreIncrement+=1;
+        scoreController.Scoreincrement(10);
+         
+    }
 }
