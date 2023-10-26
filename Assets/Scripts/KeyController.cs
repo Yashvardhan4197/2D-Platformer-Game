@@ -5,14 +5,19 @@ using UnityEngine;
 public class KeyController : MonoBehaviour
 {
     [SerializeField]Animator anim;
-    private void OnCollisionEnter2D(Collision2D other)
+    public int gap;
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.GetComponent<PlayerController>()!=null){
             PlayerController playerController=other.gameObject.GetComponent<PlayerController>();
             playerController.pickup();
             //play animation
             anim.SetBool("Picked?",true);
-            Destroy(gameObject,0.15f);
+            Vector3 position=transform.localPosition;
+            position.y=position.y+gap;
+            transform.localPosition=position;
+            Destroy(gameObject,0.2f);
+            anim.SetBool("TimePick",true);
         }
     }
 }

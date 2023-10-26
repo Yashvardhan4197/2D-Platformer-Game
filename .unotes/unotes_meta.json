@@ -1,0 +1,75 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "Assets": {
+      "name": "Assets",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Library": {
+      "name": "Library",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Logs": {
+      "name": "Logs",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "obj": {
+      "name": "obj",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Packages": {
+      "name": "Packages",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "ProjectSettings": {
+      "name": "ProjectSettings",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Temp": {
+      "name": "Temp",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "UserSettings": {
+      "name": "UserSettings",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Project Notes": {
+      "name": "Project Notes",
+      "isOrdered": true,
+      "folders": {
+        "Player_Movement": {
+          "name": "Player_Movement",
+          "isOrdered": true,
+          "folders": {},
+          "files": {
+            "Animation": 0,
+            "Jump-Setup": 1
+          }
+        }
+      },
+      "files": {
+        "Score-UI": 0
+      }
+    }
+  },
+  "files": {
+    "README": 0
+  }
+}
