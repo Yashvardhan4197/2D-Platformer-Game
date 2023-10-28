@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreController : MonoBehaviour
 {
@@ -23,6 +20,8 @@ public class ScoreController : MonoBehaviour
      }
 
      public void RefreshUI(){
-        scoreUI.text=""+score;
+        scoreUI.text="Score: "+score;
      }
+
+
 }
