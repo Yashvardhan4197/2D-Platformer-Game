@@ -8,8 +8,8 @@ public class KeyController : MonoBehaviour
     public int gap;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.GetComponent<PlayerController>()!=null){
-            PlayerController playerController=other.gameObject.GetComponent<PlayerController>();
+        PlayerController playerController=other.gameObject.GetComponent<PlayerController>();
+        if(playerController!=null){
             playerController.pickup();
             //play animation
             anim.SetBool("Picked?",true);
