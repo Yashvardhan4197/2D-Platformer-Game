@@ -5,22 +5,22 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     
-    public Animator animator;
-    public float Speed;
-    public BoxCollider2D boxCollider;
-    public int jump;
+    [SerializeField] Animator animator;
+    [SerializeField] float Speed;
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] int jump;
     private Rigidbody2D rb2d;
     //Checks if ground is there or not
     private bool checkGround;
     //Sets radius for the layermask
-    public float radius;
+    [SerializeField] float radius;
     //Area of the ground
-    public Transform ground;
+    [SerializeField] Transform ground;
     //Defines what is ground
-    public LayerMask isground;
+    [SerializeField] LayerMask isground;
 
     //Score Controller
-    public ScoreController scoreController;
+    [SerializeField] ScoreController scoreController;
 
     void Start()
     {
