@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
@@ -80,8 +74,7 @@ public class EnemyController : MonoBehaviour
                 PlayerController player=other.gameObject.GetComponent<PlayerController>();
                 player.reduceHealth();
                 Debug.Log("Player");
-                animator.SetBool("Attack",true);
-                
+                animator.SetBool("Attack",true); 
             }
     }
 }

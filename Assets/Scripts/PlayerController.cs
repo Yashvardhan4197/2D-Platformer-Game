@@ -118,10 +118,11 @@ public class PlayerController : MonoBehaviour
         scoreController.Scoreincrement(10);
          
     }
+
     public void reduceHealth(){
         health--;
         lifeController.reduce();
-        if(health==0){
+        if(health<=0){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             health=3;
             lifeController.setHealth(3);

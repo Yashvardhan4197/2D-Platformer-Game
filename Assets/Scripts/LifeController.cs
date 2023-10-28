@@ -4,7 +4,7 @@ using TMPro;
 public class LifeController : MonoBehaviour
 {
     private TextMeshProUGUI life;
-    private int health;
+    private int health=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class LifeController : MonoBehaviour
         health=h;
         RefreshUI();
     }
-    public void RefreshUI(){
+    private void RefreshUI(){
         life.text="Health: "+health;
     }
 }
