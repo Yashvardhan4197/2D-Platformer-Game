@@ -6,7 +6,7 @@ public class LifeController : MonoBehaviour
     private TextMeshProUGUI life;
     private int health=0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         life=GetComponent<TextMeshProUGUI>();
     }

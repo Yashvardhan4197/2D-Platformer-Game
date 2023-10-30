@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3109280653477571407}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 8412360258416855235}
   pointB: {fileID: 1332083286557582359}
-  speed: 2
+  speed: 1
 --- !u!1 &1332083286557582359
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6378563159692468457}
   - component: {fileID: 8701942432169823962}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PointB
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 1332083286557582359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0859046, y: 0, z: 0.12162065}
+  m_LocalPosition: {x: -0.31, y: 0, z: 0.12162065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8736919717767385234}
   - component: {fileID: 8157872212314395067}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PointA
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 8412360258416855235}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.02, y: 0, z: 0.12162065}
+  m_LocalPosition: {x: -7.76, y: 0, z: 0.12162065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

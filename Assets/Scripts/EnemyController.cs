@@ -26,55 +26,85 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Movement(){
-        if(change==true){ 
-            if(positionEnemy.x<pointB.transform.localPosition.x){
-            positionEnemy.x+=speed*Time.deltaTime;
+        // if(change==true){ 
+        //     if(positionEnemy.x<pointB.transform.localPosition.x){
+        //     positionEnemy.x+=speed*Time.deltaTime;
+        //     animator.SetBool("walk",true);
+        //     Vector3 tempscale=transform.localScale;
+        //     if(transform.localScale.x<0){
+        //         Mathf.Abs(tempscale.x);
+
+        //     }
+        //     transform.localScale=tempscale;
+
+        //     }
+        // }
+        // if(change==false){
+        //     if(positionEnemy.x>pointA.transform.localPosition.x){
+        //         //Debug.Log("Left");
+        //         positionEnemy.x-=speed*Time.deltaTime;
+        //         animator.SetBool("walk",true);
+        //     }
+        // }
+        // transform.localPosition=positionEnemy;
+
+        if(change==true){
+            transform.position=Vector2.MoveTowards(transform.position,pointB.transform.position,speed*Time.deltaTime);
+            Vector3 dir=transform.localScale;
+            dir.x=Mathf.Abs(dir.x);
+            transform.localScale=dir;
             animator.SetBool("walk",true);
-            Vector3 tempscale=transform.localScale;
-            if(transform.localScale.x<0){
-                Mathf.Abs(tempscale.x);
-
-            }
-            transform.localScale=tempscale;
-
+            if(Vector2.Distance(transform.localPosition,pointB.transform.localPosition)<1f){
+                change=false;
             }
         }
         if(change==false){
-            if(positionEnemy.x>pointA.transform.localPosition.x){
-                //Debug.Log("Left");
-                positionEnemy.x-=speed*Time.deltaTime;
-                animator.SetBool("walk",true);
-            }
-        }
-        transform.localPosition=positionEnemy;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject==pointB){
-            change=false;
+            transform.position=Vector2.MoveTowards(transform.position,pointA.transform.position,speed*Time.deltaTime);
             Vector3 dir=transform.localScale;
             if(dir.x>0){
                 dir.x=(-1)*dir.x;
             }
             transform.localScale=dir;
-            animator.SetBool("Attack",false);
-
-        }
-        else if(other.gameObject==pointA){
-            change=true;
-            Vector3 dir=transform.localScale;
-            dir.x=Mathf.Abs(dir.x);
-            transform.localScale=dir;
-            animator.SetBool("Attack",false);
+            animator.SetBool("walk",true);
+            if(Vector2.Distance(transform.localPosition,pointA.transform.localPosition)<1f){
+                change=true;
+            }
         }
     }
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if(other.gameObject==pointB){
+    //         change=false;
+    //         Vector3 dir=transform.localScale;
+    //         if(dir.x>0){
+    //             dir.x=(-1)*dir.x;
+    //         }
+    //         transform.localScale=dir;
+    //         animator.SetBool("Attack",false);
+
+    //     }
+    //     else if(other.gameObject==pointA){
+    //         change=true;
+    //         Vector3 dir=transform.localScale;
+    //         dir.x=Mathf.Abs(dir.x);
+    //         transform.localScale=dir;
+    //         animator.SetBool("Attack",false);
+    //     }
+    //}
     private void OnCollisionEnter2D(Collision2D other)
     {
             if(other.gameObject.GetComponent<PlayerController>()!=null){
                 PlayerController player=other.gameObject.GetComponent<PlayerController>();
                 player.reduceHealth();
                 Debug.Log("Player");
-                animator.SetBool("Attack",true); 
+                animator.SetBool("Attack",true);
+                Invoke("stopAnim",1);
+
             }
+    }
+    private void stopAnim(){
+        animator.SetBool("Attack",false);
+        animator.SetBool("walk",true);
     }
 }

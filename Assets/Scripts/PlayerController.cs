@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] int jump;
     private Rigidbody2D rb2d;
+    [SerializeField] Camera main_Camera;
     //Checks if ground is there or not
     private bool checkGround;
     //Sets radius for the layermask
@@ -123,9 +124,17 @@ public class PlayerController : MonoBehaviour
         health--;
         lifeController.reduce();
         if(health<=0){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            main_Camera.transform.parent=null;
+            animator.Play("Player_Death");
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            Invoke("reloadScene",2);
+        }
+    }
+
+    private void reloadScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             health=3;
             lifeController.setHealth(3);
-        }
     }
 }
