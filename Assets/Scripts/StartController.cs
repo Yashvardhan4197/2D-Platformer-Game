@@ -10,14 +10,13 @@ public class StartController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        start_button.onClick.AddListener(startLevel);
+        endLevel_button.onClick.AddListener(Endlevel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        start_button.onClick.AddListener(startLevel);
-        endLevel_button.onClick.AddListener(Endlevel);
     }
 
     private void startLevel(){

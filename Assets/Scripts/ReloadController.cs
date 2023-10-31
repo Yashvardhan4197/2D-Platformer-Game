@@ -9,12 +9,12 @@ public class ReloadController : MonoBehaviour
     void Awake()
     {
         gameObject.SetActive(false);
+        reload.onClick.AddListener(reloadLevel);
+        quit.onClick.AddListener(quitLevel);
         
     }
      void Update()
     {
-        reload.onClick.AddListener(reloadLevel);
-        quit.onClick.AddListener(quitLevel);
     }
 
     public void PlayerDead(){
