@@ -7,11 +7,13 @@ public class StartController : MonoBehaviour
 {
     [SerializeField] private Button start_button;
     [SerializeField] private Button endLevel_button;
+    [SerializeField] GameObject levelsUI;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         start_button.onClick.AddListener(startLevel);
         endLevel_button.onClick.AddListener(Endlevel);
+        levelsUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class StartController : MonoBehaviour
     }
 
     private void startLevel(){
-        SceneManager.LoadScene(1);
+        levelsUI.SetActive(true);
     }
     private void Endlevel(){
         Application.Quit();
