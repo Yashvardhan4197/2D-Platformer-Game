@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     //Score Controller
     [SerializeField] ScoreController scoreController;
     [SerializeField] LifeController lifeController;
+    [SerializeField] ReloadController reloadController;
     [SerializeField] int health;
 
     void Start()
@@ -128,13 +129,8 @@ public class PlayerController : MonoBehaviour
             main_Camera.transform.parent=null;
             animator.Play("Player_Death");
             rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
-            Invoke("reloadScene",2);
+            reloadController.PlayerDead();
+            this.enabled=false;
         }
-    }
-
-    private void reloadScene(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            health=3;
-            lifeController.setHealth(3);
     }
 }

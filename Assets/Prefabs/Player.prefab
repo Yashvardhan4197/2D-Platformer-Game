@@ -322,6 +322,7 @@ MonoBehaviour:
   Speed: 2
   boxCollider: {fileID: 7495517478360377562}
   jump: 2
+  main_Camera: {fileID: 4305877275568033962}
   radius: 0.3
   ground: {fileID: 3083138605247198589}
   isground:
@@ -329,4 +330,5 @@ MonoBehaviour:
     m_Bits: 8
   scoreController: {fileID: 0}
   lifeController: {fileID: 0}
+  reloadController: {fileID: 0}
   health: 3

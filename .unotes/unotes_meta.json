@@ -74,7 +74,8 @@
         }
       },
       "files": {
-        "Score-UI": 0
+        "Score-UI": 0,
+        "ReloadLevleUI": 1
       }
     }
   },
