@@ -7,12 +7,14 @@ public class StartController : MonoBehaviour
 {
     [SerializeField] private Button start_button;
     [SerializeField] private Button endLevel_button;
+    [SerializeField] private Button goback;
     [SerializeField] GameObject levelsUI;
     // Start is called before the first frame update
     void Awake()
     {
         start_button.onClick.AddListener(startLevel);
         endLevel_button.onClick.AddListener(Endlevel);
+        goback.onClick.AddListener(GoBack);
         levelsUI.SetActive(false);
     }
 
@@ -26,5 +28,8 @@ public class StartController : MonoBehaviour
     }
     private void Endlevel(){
         Application.Quit();
+    }
+    private void GoBack(){
+        levelsUI.SetActive(false);
     }
 }
