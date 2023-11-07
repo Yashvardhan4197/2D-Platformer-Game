@@ -27,14 +27,14 @@ public class LevelManager : MonoBehaviour
     public void markLevelCompleted(){
         Scene CurrentScene=SceneManager.GetActiveScene();
         SetLevelStatus(CurrentScene.name,LevelStatus.completed);
-        int CurrentSceneIndex=Array.FindIndex(Levels,Level=>Level==CurrentScene.name);
-        int NextSceneNumber=CurrentSceneIndex+1;
-        if(NextSceneNumber<Levels.Length){
-            Scene NextLevel=SceneManager.GetSceneByBuildIndex(NextSceneNumber+1);
-            Debug.Log("LevelName Unlocked: "+NextLevel.buildIndex +"Status: "+GetLevelStatus(NextLevel.name));
-            SetLevelStatus(NextLevel.name,LevelStatus.unlocked);
-            SceneManager.LoadScene(NextLevel.name);
-        }
+        // int CurrentSceneIndex=Array.FindIndex(Levels,Level=>Level==CurrentScene.name);
+        // int NextSceneNumber=CurrentSceneIndex+1;
+        // Scene NextLevel=SceneManager.GetSceneByBuildIndex(NextSceneNumber);
+        // if(NextSceneNumber<Levels.Length){
+        //     Debug.Log("LevelName Unlocked: "+NextLevel.buildIndex +"Status: "+GetLevelStatus(NextLevel.name));
+        //     SetLevelStatus(NextLevel.name,LevelStatus.unlocked);
+        //     SceneManager.LoadScene(NextLevel.name);
+        // }
 
 
     }

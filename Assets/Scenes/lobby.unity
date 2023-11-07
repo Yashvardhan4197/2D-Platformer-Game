@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fdc01e279394249a95a0a244ef3769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelname: SampleScene
+  levelname: SecondLevel
   level: {fileID: 191556726}
 --- !u!1 &214891090
 GameObject:
@@ -2001,6 +2001,7 @@ GameObject:
   - component: {fileID: 822372736}
   - component: {fileID: 822372735}
   - component: {fileID: 822372734}
+  - component: {fileID: 822372737}
   m_Layer: 5
   m_Name: Level4
   m_TagString: Untagged
@@ -2111,6 +2112,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822372732}
   m_CullTransparentMesh: 1
+--- !u!114 &822372737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822372732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fdc01e279394249a95a0a244ef3769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelname: ThirdLevel
+  level: {fileID: 822372734}
 --- !u!1 &1265310067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,8 +2641,8 @@ MonoBehaviour:
   Levels:
   - Tutorial
   - FirstLevel
-  - SampleScene
-  - SampleScene
+  - SecondLevel
+  - ThirdLevel
 --- !u!4 &1949874786
 Transform:
   m_ObjectHideFlags: 0
