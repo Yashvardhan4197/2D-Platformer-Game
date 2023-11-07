@@ -75,7 +75,8 @@
       },
       "files": {
         "Score-UI": 0,
-        "ReloadLevleUI": 1
+        "ReloadLevleUI": 1,
+        "Level_Loader(Grid)": 2
       }
     }
   },

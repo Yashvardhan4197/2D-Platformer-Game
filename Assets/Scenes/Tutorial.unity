@@ -405,10 +405,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boundary
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5871290021256142930, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5,
+        type: 3}
+      propertyPath: NextLevel
+      value: FirstLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871290021256142930, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5,
+        type: 3}
+      propertyPath: CurrentLevel
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938112121931991058, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.55
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5871290021256142930, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4928525488841499876, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2125931775}
   m_SourcePrefab: {fileID: 100100000, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5, type: 3}
 --- !u!1 &752547610
 GameObject:
@@ -4396,6 +4416,74 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2003502198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003502200}
+  - component: {fileID: 2003502199}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2003502199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003502198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84a42c4a1812544baa9a76628b811cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Levels:
+  - Tutorial
+  - FirstLevel
+  - SampleScene
+--- !u!4 &2003502200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003502198}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.696865, y: -0.21786791, z: 0.20730042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2125931770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928525488841499876, guid: 451a7ad77f2ffe640a8a6ca3e4dccbe5,
+    type: 3}
+  m_PrefabInstance: {fileID: 712574422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2125931775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125931770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab40c062ede0d54facc4f642532b803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentLevel: Tutorial
+  NextLevel: FirstLevel
 --- !u!1001 &2134317533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4526,6 +4614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125431720838599550, guid: dc76d38549f6c76449a43cd412038f4b,
+        type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5125431720838599550, guid: dc76d38549f6c76449a43cd412038f4b,
         type: 3}
@@ -4687,3 +4780,4 @@ SceneRoots:
   - {fileID: 559198272}
   - {fileID: 2134317533}
   - {fileID: 1760882972}
+  - {fileID: 2003502200}
