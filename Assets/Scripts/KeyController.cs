@@ -16,6 +16,8 @@ public class KeyController : MonoBehaviour
             transform.localPosition=position;
             Destroy(gameObject,0.2f);
             anim.SetBool("TimePick",true);
+
+            SoundManager.Instance.PlaySound(Sound.keyPick);
         }
     }
 }

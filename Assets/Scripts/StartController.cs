@@ -25,11 +25,14 @@ public class StartController : MonoBehaviour
 
     private void startLevel(){
         levelsUI.SetActive(true);
+        SoundManager.Instance.PlaySound(Sound.ButtonClick);
     }
     private void Endlevel(){
         Application.Quit();
+        SoundManager.Instance.PlaySound(Sound.ButtonClick);
     }
     private void GoBack(){
         levelsUI.SetActive(false);
+        SoundManager.Instance.PlaySound(Sound.ButtonClick);
     }
 }
