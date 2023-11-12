@@ -137,6 +137,10 @@ GameObject:
   - component: {fileID: 4363796522913781282}
   - component: {fileID: 7495517478360377562}
   - component: {fileID: 5125431720838599550}
+  - component: {fileID: 7045924359215870238}
+  - component: {fileID: 2551956691167644439}
+  - component: {fileID: 6585586953648071554}
+  - component: {fileID: 3476944178897600867}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -313,7 +317,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7848271309500698547}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a4224710697db9439d69fb42b875c94, type: 3}
   m_Name: 
@@ -331,4 +335,66 @@ MonoBehaviour:
   scoreController: {fileID: 0}
   lifeController: {fileID: 0}
   reloadController: {fileID: 0}
+  health: 10
+--- !u!114 &7045924359215870238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848271309500698547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3170171332109984f8471a6ab55b5621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 2
+  isground:
+    serializedVersion: 2
+    m_Bits: 8
+  ground: {fileID: 3083138605247198589}
+  jumpPower: 6
+  animator: {fileID: 9005066898778544755}
+  radius: 0.3
+--- !u!114 &2551956691167644439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848271309500698547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb2495181edcea40be60119d98943bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6585586953648071554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848271309500698547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab2c66db44922f44b36e22000137516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3476944178897600867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848271309500698547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a13e896e3486ca4e890a1ad68a28252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreController: {fileID: 0}
+  lifeController: {fileID: 0}
+  reloadController: {fileID: 0}
+  main_Camera: {fileID: 4305877275568033962}
+  animator: {fileID: 9005066898778544755}
   health: 3
