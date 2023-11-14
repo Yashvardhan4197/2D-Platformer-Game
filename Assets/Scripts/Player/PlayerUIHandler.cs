@@ -9,6 +9,7 @@ public class PlayerUIHandler : MonoBehaviour
     [SerializeField] Camera main_Camera;
     [SerializeField] Animator animator;
     [SerializeField] int health;
+    [SerializeField] DestroyShield destroyShield;
     public void pickup()
     {
          //scoreIncrement+=1;
@@ -22,8 +23,12 @@ public class PlayerUIHandler : MonoBehaviour
     }
 
     public void reduceHealth(){
+        if((destroyShield.count<=0)||(destroyShield.isActiveAndEnabled==false))
+        {
         health--;
         lifeController.reduce();
+        }
+        
         if(health<=0){
             rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
             main_Camera.transform.parent=null;
@@ -32,5 +37,9 @@ public class PlayerUIHandler : MonoBehaviour
             reloadController.PlayerDead();
             this.enabled=false;
         }
+    }
+    public void IncreaseHealth(){
+        health++;
+        lifeController.setHealth(health);
     }
 }

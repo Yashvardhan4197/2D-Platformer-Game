@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    public void PlayAnim(float Horizontal,float Vertical,float jumping,bool checkGround,Rigidbody2D rb2d,Animator animator){
-        if((Vertical>0||jumping>0)&&(checkGround==true)){
+    public void PlayAnim(float Horizontal,float Vertical,int doubleJumpCount,float jumping,bool checkGround,Rigidbody2D rb2d,Animator animator){
+        if(Input.GetKeyDown(KeyCode.Space)){
                 if(rb2d.velocity.y>0f){
                     animator.SetBool("Jump",true);
                 }
