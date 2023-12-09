@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     //Score Controller
     [SerializeField] ScoreController scoreController;
     [SerializeField] LifeController lifeController;
+    [SerializeField] ReloadController reloadController;
     [SerializeField] int health;
 
     void Start()
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour
         Vector3 position=transform.position;
         position.x=position.x+Horizontal*Speed*Time.deltaTime;
         transform.position=position;   
+
+        //Sound
+        if(Horizontal!=0){
+            SoundManager.Instance.PlayWalkSound(Sound.PlayerWalk);
+        }
     }
 
     private void Player_Anim(float Horizontal,float Vertical)
@@ -80,15 +86,16 @@ public class PlayerController : MonoBehaviour
     void Player_Jump(float Vertical,float jumping)
     {
         checkGround=Physics2D.OverlapCircle(ground.position,radius,isground);
-        if((Vertical>0||jumping>0) && checkGround==true){
-            if(rb2d.velocity.y>0f){
-                animator.SetBool("Jump",true);
-            }
-            else{
-                animator.SetBool("Fall",true);
-            }
+        if((Vertical>0||jumping>0)&&(checkGround==true)){
+                if(rb2d.velocity.y>0f){
+                    animator.SetBool("Jump",true);
+                }
+                else{
+                    animator.SetBool("Fall",true);
+                }
        }
        else if(Vertical<=0){
+        
         animator.SetBool("Jump",false);
         animator.SetBool("Fall",false);
        }
@@ -128,13 +135,8 @@ public class PlayerController : MonoBehaviour
             main_Camera.transform.parent=null;
             animator.Play("Player_Death");
             rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
-            Invoke("reloadScene",2);
+            reloadController.PlayerDead();
+            this.enabled=false;
         }
-    }
-
-    private void reloadScene(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            health=3;
-            lifeController.setHealth(3);
     }
 }
