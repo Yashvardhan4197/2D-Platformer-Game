@@ -102,6 +102,9 @@ public class EnemyController : MonoBehaviour
                 Invoke("stopAnim",1);
 
             }
+            if(other.gameObject.tag=="Shield"){
+                Destroy(other.gameObject);
+            }
     }
     private void stopAnim(){
         animator.SetBool("Attack",false);
