@@ -47,4 +47,9 @@ public class LevelManager : MonoBehaviour
     public void SetLevelStatus(string level,LevelStatus levelStatus){
         PlayerPrefs.SetInt(level,(int)levelStatus);
     }
+
+    public static implicit operator LevelManager(SoundManager v)
+    {
+        throw new NotImplementedException();
+    }
 }

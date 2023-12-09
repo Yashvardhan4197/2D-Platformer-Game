@@ -78,7 +78,8 @@
         "ReloadLevleUI": 1,
         "Level_Loader(Grid)": 2,
         "LevelManager": 3,
-        "Singleton pattern": 4
+        "Singleton pattern": 4,
+        "Sound_Manager": 5
       }
     }
   },

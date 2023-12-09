@@ -15,6 +15,8 @@ public class SwitchLevel : MonoBehaviour
         if(other.tag=="Player"){
             LevelManager.Instance.markLevelCompleted();
             switchLevelUIController.Completed(NextLevel);
+
+            SoundManager.Instance.PlaySound(Sound.ChangeLevel);
         }
     }
     private void ChangeLevel(){
