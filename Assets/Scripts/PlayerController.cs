@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] int jump;
     private Rigidbody2D rb2d;
+    [SerializeField] Camera main_Camera;
     //Checks if ground is there or not
     private bool checkGround;
     //Sets radius for the layermask
@@ -21,10 +21,14 @@ public class PlayerController : MonoBehaviour
 
     //Score Controller
     [SerializeField] ScoreController scoreController;
+    [SerializeField] LifeController lifeController;
+    [SerializeField] ReloadController reloadController;
+    [SerializeField] int health;
 
     void Start()
     {
         rb2d= GetComponent<Rigidbody2D>();
+        lifeController.setHealth(health);
     }
     void Update()
     {
@@ -53,6 +57,11 @@ public class PlayerController : MonoBehaviour
         Vector3 position=transform.position;
         position.x=position.x+Horizontal*Speed*Time.deltaTime;
         transform.position=position;   
+
+        //Sound
+        if(Horizontal!=0){
+            SoundManager.Instance.PlayWalkSound(Sound.PlayerWalk);
+        }
     }
 
     private void Player_Anim(float Horizontal,float Vertical)
@@ -77,15 +86,16 @@ public class PlayerController : MonoBehaviour
     void Player_Jump(float Vertical,float jumping)
     {
         checkGround=Physics2D.OverlapCircle(ground.position,radius,isground);
-        if((Vertical>0||jumping>0) && checkGround==true){
-            if(rb2d.velocity.y>0f){
-                animator.SetBool("Jump",true);
-            }
-            else{
-                animator.SetBool("Fall",true);
-            }
+        if((Vertical>0||jumping>0)&&(checkGround==true)){
+                if(rb2d.velocity.y>0f){
+                    animator.SetBool("Jump",true);
+                }
+                else{
+                    animator.SetBool("Fall",true);
+                }
        }
        else if(Vertical<=0){
+        
         animator.SetBool("Jump",false);
         animator.SetBool("Fall",false);
        }
@@ -115,5 +125,18 @@ public class PlayerController : MonoBehaviour
          //scoreIncrement+=1;
         scoreController.Scoreincrement(10);
          
+    }
+
+    public void reduceHealth(){
+        health--;
+        lifeController.reduce();
+        if(health<=0){
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            main_Camera.transform.parent=null;
+            animator.Play("Player_Death");
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            reloadController.PlayerDead();
+            this.enabled=false;
+        }
     }
 }
