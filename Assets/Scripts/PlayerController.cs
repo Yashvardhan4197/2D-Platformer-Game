@@ -1,27 +1,34 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     
-    public Animator animator;
-    public float Speed;
-    public BoxCollider2D boxCollider;
-    public int jump;
+    [SerializeField] Animator animator;
+    [SerializeField] float Speed;
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] int jump;
     private Rigidbody2D rb2d;
-
-//Checks if ground is there or not
+    [SerializeField] Camera main_Camera;
+    //Checks if ground is there or not
     private bool checkGround;
     //Sets radius for the layermask
-    public float radius;
+    [SerializeField] float radius;
     //Area of the ground
-    public Transform ground;
+    [SerializeField] Transform ground;
     //Defines what is ground
-    public LayerMask isground;
+    [SerializeField] LayerMask isground;
+
+    //Score Controller
+    [SerializeField] ScoreController scoreController;
+    [SerializeField] LifeController lifeController;
+    [SerializeField] ReloadController reloadController;
+    [SerializeField] int health;
 
     void Start()
     {
         rb2d= GetComponent<Rigidbody2D>();
+        lifeController.setHealth(health);
     }
     void Update()
     {
@@ -40,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-
         
 
     }
@@ -51,6 +57,11 @@ public class PlayerController : MonoBehaviour
         Vector3 position=transform.position;
         position.x=position.x+Horizontal*Speed*Time.deltaTime;
         transform.position=position;   
+
+        //Sound
+        if(Horizontal!=0){
+            SoundManager.Instance.PlayWalkSound(Sound.PlayerWalk);
+        }
     }
 
     private void Player_Anim(float Horizontal,float Vertical)
@@ -75,11 +86,18 @@ public class PlayerController : MonoBehaviour
     void Player_Jump(float Vertical,float jumping)
     {
         checkGround=Physics2D.OverlapCircle(ground.position,radius,isground);
-        if((Vertical>0||jumping>0) && checkGround==true){
-        animator.SetBool("Jump",true);
+        if((Vertical>0||jumping>0)&&(checkGround==true)){
+                if(rb2d.velocity.y>0f){
+                    animator.SetBool("Jump",true);
+                }
+                else{
+                    animator.SetBool("Fall",true);
+                }
        }
        else if(Vertical<=0){
+        
         animator.SetBool("Jump",false);
+        animator.SetBool("Fall",false);
        }
        //Jump
         if((Vertical>0||jumping>0)&&(checkGround==true))
@@ -101,5 +119,24 @@ public class PlayerController : MonoBehaviour
             boxCollider.offset=new Vector2(0.012f,1.03f);
         }
     }
-   
+
+    public void pickup()
+    {
+         //scoreIncrement+=1;
+        scoreController.Scoreincrement(10);
+         
+    }
+
+    public void reduceHealth(){
+        health--;
+        lifeController.reduce();
+        if(health<=0){
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            main_Camera.transform.parent=null;
+            animator.Play("Player_Death");
+            rb2d.constraints=RigidbodyConstraints2D.FreezePosition;
+            reloadController.PlayerDead();
+            this.enabled=false;
+        }
+    }
 }
