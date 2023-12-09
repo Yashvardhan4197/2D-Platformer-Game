@@ -1,15 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SwitchLevel : MonoBehaviour
 {
-    public string sceneName;
+    [SerializeField]private  string CurrentLevel;
+    [SerializeField]private string NextLevel;
+    
+    [SerializeField]SwitchLevelUIController switchLevelUIController;
+    
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag=="Player"){
-            SceneManager.LoadScene(sceneName);
+            LevelManager.Instance.markLevelCompleted();
+            switchLevelUIController.Completed(NextLevel);
+
+            SoundManager.Instance.PlaySound(Sound.ChangeLevel);
         }
+    }
+    private void ChangeLevel(){
+        //to Unlock NextLevel
+        SceneManager.LoadScene(NextLevel);
+        LevelManager.Instance.SetLevelStatus(NextLevel,LevelStatus.unlocked);
+    }
+    private void GoBacktoLobby(){
+        SceneManager.LoadScene("Lobby");
     }
 }

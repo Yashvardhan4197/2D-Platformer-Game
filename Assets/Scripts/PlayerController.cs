@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
         Vector3 position=transform.position;
         position.x=position.x+Horizontal*Speed*Time.deltaTime;
         transform.position=position;   
+
+        //Sound
+        if(Horizontal!=0){
+            SoundManager.Instance.PlayWalkSound(Sound.PlayerWalk);
+        }
     }
 
     private void Player_Anim(float Horizontal,float Vertical)
