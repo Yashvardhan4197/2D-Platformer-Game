@@ -94,13 +94,16 @@ public class EnemyController : MonoBehaviour
     //}
     private void OnCollisionEnter2D(Collision2D other)
     {
-            if(other.gameObject.GetComponent<PlayerController>()!=null){
-                PlayerController player=other.gameObject.GetComponent<PlayerController>();
+            if(other.gameObject.GetComponent<PlayerUIHandler>()!=null){
+                PlayerUIHandler player=other.gameObject.GetComponent<PlayerUIHandler>();
                 player.reduceHealth();
                 Debug.Log("Player");
                 animator.SetBool("Attack",true);
                 Invoke("stopAnim",1);
 
+            }
+            if(other.gameObject.tag=="Shield"){
+                Destroy(other.gameObject);
             }
     }
     private void stopAnim(){
